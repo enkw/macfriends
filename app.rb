@@ -1,10 +1,10 @@
 require 'twitter'
 require 'sinatra'
 
-TW_CONSUMER_KEY        = "your_consumer_key"
-TW_CONSUMER_SECRET     = "your_consumer_secret"
-TW_ACCESS_TOKEN        = "your_access_token"
-TW_ACCESS_TOKEN_SECRET = "your_access_token_secret"
+TW_CONSUMER_KEY        = "bJAb7SxAbRLiUSz71OMsg"
+TW_CONSUMER_SECRET     = "DEj6kayV1V7AD8jXRAvs3BfNg52ofCjovCr2K9o4"
+TW_ACCESS_TOKEN        = "381595197-K6H2cXUSPAXBiqZd67i206pMFgpe9UevVPD1ty62"
+TW_ACCESS_TOKEN_SECRET = "TA9ocbEWpjoIG9Om35zc9or2RVTPysbad0P3NmkAA02ai"
 
 twClient = Twitter::REST::Client.new do |config|
     config.consumer_key        = TW_CONSUMER_KEY
