@@ -24,10 +24,15 @@ html = ""
      #html = tweet[:user].to_s
      #html += "<p>"+tweet[:user].to_s+"</p>"
      html += "<h1>"+"@"+tweet[:user][:screen_name]+"</h1>"
-     #html += "<h2>"+tweet[:statuses]+"</h2>"
+     html += "<h2>"+tweet[:text].to_s+"</h2>"
      #html += "<img src="+tweet[:user][:url].to_s+">"
-     #html += "<p>"+tweet[:lang]+"</p>"
+     #html += "<p>"+tweet[:user].to_s+"</p>"
      #html += "<br>"
    end
    html
+end
+
+get '/tweet/' do
+  @hello = "こんにちは！じぇじぇじぇ！"
+  erb :index
 end
