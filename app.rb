@@ -27,7 +27,7 @@ html = ""
      #html = tweet[:user].to_s
      html += "<h1>"+tweet[:user][:name]+"@"+tweet[:user][:screen_name]+"</h1>"
      html += "<h2>"+tweet[:text].to_s+"</h2>"
-     html += "<p>"+tweet[:entities][:media][:media_url].to_s+"</p>"
+     html += "<p>"+tweet[:entities][:media][:media_url]+"</p>"
      #html += "<p>"+a[:media_url]+"</p>"
      #html += "<p>"+a.[:media_url].to_s"</p>"
      #html += "<img src="+tweet[:user][:url].to_s+">"
