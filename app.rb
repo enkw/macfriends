@@ -25,9 +25,10 @@ puts results = twClient.search(word, :count => 100, :result_type => "recent")
 html = ""
    results.attrs[:statuses].each do |tweet|
      #html = tweet[:user].to_s
-     html += "<h1>"+tweet[:user][:name]+"@"+tweet[:user][:screen_name]+"</h1>"
-     html += "<h2>"+tweet[:text].to_s+"</h2>"
-     html += "<h3>"+tweet[:entities][:media].to_s+"</h3>"
+	 html += "<h1>"+"#MacFriends"+"</h1>"
+     html += "<h2>"+"@"+tweet[:user][:screen_name]+"</h2>"
+     html += "<p>"+tweet[:text].to_s+"</p>"
+     #html += "<p>"+tweet[:entities].to_s+"</p>"
      #html += "<p>"+a[:media_url]+"</p>"
      #html += "<p>"+a.[:media_url].to_s"</p>"
      #html += "<img src="+tweet[:user][:url].to_s+">"
@@ -38,6 +39,7 @@ html = ""
 end
 
 get '/tweet/' do
+
   @hello = "こんにちは！じぇじぇじぇ！"
   erb :index
 end
