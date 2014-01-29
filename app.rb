@@ -25,7 +25,6 @@ puts results = twClient.search(word, :count => 100, :result_type => "recent")
 html = ""
    results.attrs[:statuses].each do |tweet|
      #html = tweet[:user].to_s
-	 html += "<h1>"+"#MacFriends"+"</h1>"
      html += "<h2>"+"@"+tweet[:user][:screen_name]+"</h2>"
      html += "<p>"+tweet[:text].to_s+"</p>"
      #html += "<p>"+tweet[:entities].to_s+"</p>"
