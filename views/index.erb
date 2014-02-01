@@ -4,12 +4,34 @@
 	<meta charset="utf-8">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap.css" rel="stylesheet">
-	<title>BBS</title>
+	<title>#MacFriends</title>
 </head>
 <body>
-	<h1>BBS</h1>
-	<%= @hello %>
+	<div class ="container">
+		<div class='header'>
+		<h1><a href="/">#MacFriends</a></h1>
+		<div class='feed'>
+			<a href="https://twitter.com/#!/RubyFriends"><img alt="Twitter icon grey" src="/images/twitter_icon_grey.png" /></a>
+			<a href="http://rubyfriends.com/tweets.atom"><img alt="Feed icon grey" src="/images/feed_icon_grey.png" /></a>
+		</div>
+		</div>
+		<div class="jumbotron">
+			<h3>Community starts with friendship! <a href="/about" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></h3>
+			<p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/#!/RubyFriends">#MacFriends</a></p>
+		</div>
+		<h2>@<%= @username %></h2>
+		<p><%= @text %></p
+		<img src="<%= @image_url %>">
+		<hr>
+		<ul class="pagination">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
 </body>
 <html>
-
-
