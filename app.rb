@@ -6,14 +6,6 @@ TW_CONSUMER_SECRET     = "DEj6kayV1V7AD8jXRAvs3BfNg52ofCjovCr2K9o4"
 TW_ACCESS_TOKEN        = "381595197-K6H2cXUSPAXBiqZd67i206pMFgpe9UevVPD1ty62"
 TW_ACCESS_TOKEN_SECRET = "TA9ocbEWpjoIG9Om35zc9or2RVTPysbad0P3NmkAA02ai"
 
-#@Client = Twitter::REST::Client
-#twClient = @Client.new do |config|
-#	config.consumer_key        = TW_CONSUMER_KEY
-#    config.consumer_secret     = TW_CONSUMER_SECRET
-#    config.access_token        = TW_ACCESS_TOKEN
-#    config.access_token_secret = TW_ACCESS_TOKEN_SECRET
-#end
-
 twClient = Twitter::REST::Client.new do |config|
     config.consumer_key        = TW_CONSUMER_KEY
     config.consumer_secret     = TW_CONSUMER_SECRET
@@ -21,30 +13,12 @@ twClient = Twitter::REST::Client.new do |config|
     config.access_token_secret = TW_ACCESS_TOKEN_SECRET
 end
 
-
 get '/' do
-
 	word = "#macfriends";
-	puts results = twClient.search(word, :count => 100, :result_type => "recent")
-	#html = ""
-	results.attrs[:statuses].each do |tweet|
-		#html += "<h2>"+"@"+tweet[:user][:screen_name]+"</h2>"
-		#html += "<p>"+tweet[:text].to_s+"</p>"
-    	#if tweet[:entities][:media] != nil
-		#html += "<img src="+tweet[:entities][:media][0][:media_url].to_s+">"
-		#end
-		#html += "<p>"+tweet.to_s+"</p>"
-
-		@username = tweet[:user][:screen_name].to_s
-		@text = tweet[:text].to_s
-		if tweet[:entities][:media] != nil
-			@media_url = tweet[:entities][:media][0][:media_url].to_s
-		end
-	end
-   	#html
+	@results = twClient.search(word, :count => 5, :result_type => "default_search_result_type")
 	erb :index
 end
 
 get '/about' do
-  erb :about
+	erb :about
 end
