@@ -3,8 +3,8 @@ require 'sinatra'
 
 TW_CONSUMER_KEY        = "bJAb7SxAbRLiUSz71OMsg"
 TW_CONSUMER_SECRET     = "DEj6kayV1V7AD8jXRAvs3BfNg52ofCjovCr2K9o4"
-TW_ACCESS_TOKEN        = "381595197-K6H2cXUSPAXBiqZd67i206pMFgpe9UevVPD1ty62"
-TW_ACCESS_TOKEN_SECRET = "TA9ocbEWpjoIG9Om35zc9or2RVTPysbad0P3NmkAA02ai"
+TW_ACCESS_TOKEN        = "381595197-jWrB4H27IXe334gQEUAmiYySQXmEfsqRdVagojUe"
+TW_ACCESS_TOKEN_SECRET = "7xY47I7fsnDUYsXKUMEBJXQ3ThG4aQ1K4RBP5NZzw2g0E"
 
 twClient = Twitter::REST::Client.new do |config|
     config.consumer_key        = TW_CONSUMER_KEY
@@ -15,7 +15,7 @@ end
 
 get '/' do
 	word = "#macfriends";
-	@results = twClient.search(word, :count => 100, :result_type => "recent")
+	@results = twClient.search(word, :count => 100)
 	erb :index
 end
 
