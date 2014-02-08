@@ -15,7 +15,7 @@ end
 
 get '/' do
 	word = "#macfriends";
-	@results = twClient.search(word, :count => 5, :result_type => "default_search_result_type")
+	@results = twClient.search(word, :count => 100, :result_type => "recent")
 	erb :index
 end
 
