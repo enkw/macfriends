@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <title>#MacFriends - Share your smile with Macbook</title>
+</head>
+<body>
+    <div class ="container">
+        <div class="header">
+        <div class="feed">
+            <a href="https://twitter.com/MacFriends_"><img alt="Twitter icon grey" src="/images/twitter_icon_grey.png" /></a>
+            <a href="http://rubyfriends.com/tweets.atom"><img alt="Feed icon grey" src="/images/feed_icon_grey.png" /></a>
+        </div>
+            <h1><a href="/">#MacFriends</a></h1>
+        </div>
+
+        <div class="jumbotron">
+            <h3>Community starts with friendship! <a href="/about" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></h3>
+            <p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/MacFriends_">#MacFriends</a></p>
+        </div>
+	
+		<% options = {"count" => 10} %>	
+		<% @timeline.each do |res| %>
+			<h2>@<%= "#{res.retweeted_tweet.user.screen_name}" %></h2>
+			<p><%= "#{res.retweeted_tweet.text}" %></p>
+		<% end %>
+    </div>
+</body>
+<html>

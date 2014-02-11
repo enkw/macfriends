@@ -22,3 +22,9 @@ end
 get '/about' do
 	erb :about
 end
+
+get '/test' do
+	options = {"count" => 10}
+	@timeline = twClient.user_timeline("MacFriends_", options)
+	erb :test
+end
