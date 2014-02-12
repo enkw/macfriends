@@ -24,6 +24,7 @@
 		<% @results.attrs[:statuses].each do |tweet| %>
 			<h2>@<%= tweet[:user][:screen_name] %></h2>
 			<p><%= tweet[:text].to_s %></p>
+			<p><%= tweet[:created_at].to_s %></p>
 			<% if tweet[:entities][:media] != nil %>
 				<img src="<%= tweet[:entities][:media][0][:media_url] %>">
 			<% end %>

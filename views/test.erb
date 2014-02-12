@@ -21,10 +21,10 @@
             <p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/MacFriends_">#MacFriends</a></p>
         </div>
 	
-		<% options = {"count" => 10} %>	
 		<% @timeline.each do |res| %>
 			<h2>@<%= "#{res.retweeted_tweet.user.screen_name}" %></h2>
 			<p><%= "#{res.retweeted_tweet.text}" %></p>
+			<p><%= "#{res.retweeted_tweet.created_at}" %></p>
 			<hr>
 		<% end %>
     </div>
