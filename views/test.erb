@@ -25,6 +25,7 @@
 		<% @timeline.each do |res| %>
 			<h2>@<%= "#{res.retweeted_tweet.user.screen_name}" %></h2>
 			<p><%= "#{res.retweeted_tweet.text}" %></p>
+			<hr>
 		<% end %>
     </div>
 </body>
