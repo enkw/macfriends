@@ -23,10 +23,15 @@
 	
 		<% @timeline.each do |res| %>
 			<h2>@<%= "#{res.retweeted_tweet.user.screen_name}" %></h2>
-			<p><%= "#{res.retweeted_tweet.text}" %></p>
+			<p><%= res.retweeted_tweet.text %></p>
+			<% if res.retweeted_tweet.media[0] != nil %>
+				<img src="<%= res.retweeted_tweet.media[0].media_url %>">
+				<% end %>
 			<p><%= "#{res.retweeted_tweet.created_at}" %></p>
 			<hr>
 		<% end %>
-    </div>
+
+    
+	</div>
 </body>
 <html>
