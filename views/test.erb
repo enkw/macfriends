@@ -22,7 +22,7 @@
         </div>
 	
 		<% @timeline.each do |res| %>
-			<h2>@<%= "#{res.retweeted_tweet.user.screen_name}" %></h2>
+			<h2><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
 			<p><%= res.retweeted_tweet.text %></p>
 			<% if res.retweeted_tweet.media[0] != nil %>
 				<img src="<%= res.retweeted_tweet.media[0].media_url %>">
