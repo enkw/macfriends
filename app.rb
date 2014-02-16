@@ -14,9 +14,9 @@ twClient = Twitter::REST::Client.new do |config|
 end
 
 get '/' do
-	word = "#macfriends";
-	@results = twClient.search(word, :count => 100)
-	erb :index
+	options = {"count" => 10}
+	@timeline = twClient.user_timeline("MacFriends_", options)
+	erb :test
 end
 
 get '/about' do
@@ -24,7 +24,7 @@ get '/about' do
 end
 
 get '/test' do
-	options = {"count" => 10}
-	@timeline = twClient.user_timeline("MacFriends_", options)
-	erb :test
+	word = "#macfriends";
+    @results = twClient.search(word, :count => 100)
+    erb :index
 end
