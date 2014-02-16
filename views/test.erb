@@ -21,21 +21,19 @@
             <p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/MacFriends_">#MacFriends</a></p>
         </div>
 	
-
 		<div class="row">
 			<% @timeline.each do |res| %>
 				<% if res.retweeted_tweet.media[0] != nil %>
-        		<div class="col-lg-6">
-					 <h2><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
-           		 	<p><%= res.retweeted_tweet.text %></p>
-               		 <img src="<%= res.retweeted_tweet.media[0].media_url %>">
-					 <p><%= "#{res.retweeted_tweet.created_at}" %></p>
-        		</div>
+					<div class="col-lg-6">
+						<h2><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
+           		 	   	<p><%= res.retweeted_tweet.text %></p>
+               		 	<img src="<%= res.retweeted_tweet.media[0].media_url %>">
+					 	<p><%= "#{res.retweeted_tweet.created_at}" %></p>
+        			</div>
 				<% end %>
-				<% end %>
+			<% end %>
 		</div>
 
-    
 	</div>
 </body>
 <html>
