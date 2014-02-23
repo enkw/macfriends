@@ -14,7 +14,7 @@ twClient = Twitter::REST::Client.new do |config|
 end
 
 get '/' do
-	options = {"count" => 10}
+	options = {"count" => 1000}
 	@timeline = twClient.user_timeline("MacFriends_", options)
 	erb :test
 end
