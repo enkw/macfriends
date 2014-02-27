@@ -783,6 +783,7 @@ pre code {
 }
 
 .container {
+  width:1140px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -828,8 +829,9 @@ pre code {
 }
 
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  width:1270px;
+  margin:auto;
+  padding:0px;
 }
 
 .row:before,
@@ -903,7 +905,7 @@ pre code {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
-  padding-left: 15px;
+ // padding-left: 15px;
 }
 
 .col-xs-1,
@@ -1500,6 +1502,7 @@ pre code {
   }
   .col-lg-6 {
     width: 50%;
+	padding:0px;
   }
   .col-lg-5 {
     width: 41.66666666666667%;
@@ -7120,4 +7123,15 @@ td.visible-print {
 
 .feed{
 float :right;
+}
+
+#media{
+	width:500px;
+	height:400px;
+
+}
+
+.box {
+	width:500px;
+	height:400px;
 }
