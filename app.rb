@@ -28,3 +28,7 @@ get '/test' do
     @results = twClient.search(word, :count => 100)
     erb :index
 end
+
+get '/embedly' do
+	erb :embedly
+end
