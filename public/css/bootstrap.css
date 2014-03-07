@@ -7131,3 +7131,12 @@ float :right;
 
 }
 
+.box{
+	width:500px;
+	height:400px;
+}
+@media screen and (max-width:1200px){
+.box {
+	width:800px;
+	height:800px;
+}
