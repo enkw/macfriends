@@ -7152,3 +7152,15 @@ float :right;
 	height:500px;
 }
 }
+@media screen and (min-width:1200px){
+.space {
+	font-size:12px;
+	margin-left:40px;
+}
+h2 a{
+	margin-left:40px;
+}
+}
+.row h2 {
+	width:300px;
+}

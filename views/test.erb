@@ -55,12 +55,12 @@
                     	<div class="col-lg-6" >
 							
 							<% if res.retweeted_tweet.media[0] %>							
-								<h2><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
-                            	<p><%= res.retweeted_tweet.text %></p>
+								<h2 class = "spot"><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
+                            	<p class = "space"><%= res.retweeted_tweet.text %></p>
 								<div id = "media">
 								<img class = "box" src="<%= res.retweeted_tweet.media[0].media_url %>">
 								</div>
-								<p><%= "#{res.retweeted_tweet.created_at}" %></p>
+								<p class = "space"><%= "#{res.retweeted_tweet.created_at}" %></p>
 							<% elsif res.retweeted_tweet.url %>
 								<hoge href ="<%= res.retweeted_tweet.media[0].media_url %>"></hoge>						
 							<% end %>	
