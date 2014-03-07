@@ -827,13 +827,19 @@ pre code {
     width: 85%;
   }
 }
+.row {
+	width:100%;
+	margin:auto;
+	padding:0px;
+}
 
+@media(max-width:1200px){
 .row {
   width:85%;
   margin:auto;
   padding:0px;
 }
-
+}
 .row:before,
 .row:after {
   display: table;
