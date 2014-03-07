@@ -7,7 +7,6 @@
     <meta property="og:description" content="世界中のMacbookの背面をシェアします。">
     <meta property="og:url" content="http://macfriends.net">
     <meta property="og:image" content="https://pbs.twimg.com/media/BhPgimnCcAAM3DA.png:large">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="alternate" type="application/rss+xml" title="#MacFriends" href="http://rssc.dokoda.jp/r/cda48350a459151cbe5f7c525e141498/http/macfriends.net/">
@@ -53,7 +52,7 @@
             <% @timeline.each do |res| %>
                 <% if res.retweeted_tweet.media[0] != nil %>
 				<% if res.retweeted_tweet.user.screen_name.to_s != '' %>
-                    	<div class="col-sm-6 col-md-6" >
+                    	<div class="col-lg-6" >
 							
 							<% if res.retweeted_tweet.media[0] %>							
 								<h2><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
