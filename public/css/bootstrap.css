@@ -7136,7 +7136,12 @@ float :right;
 	height:400px;
 }
 @media screen and (max-width:1200px){
-.box {
+#media {
 	width:800px;
-	height:800px;
+	height:auto;
+}
+.box {
+	width:500px;
+	height:500px;
+}
 }
