@@ -1,6 +1,6 @@
 macfriends
 ==========
-[#MacFriends](http://macfriends/)のリポジトリです。
+[#MacFriends](http://macfriends.net/)のリポジトリです。
 
 ## 概要
 - あなたのMacbookの背面をシェアすることができます。
