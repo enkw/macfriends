@@ -2,3 +2,5 @@ macfriends
 ==========
 
 macfriends
+
+`bundle install`
