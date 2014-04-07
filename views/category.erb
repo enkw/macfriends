@@ -36,7 +36,7 @@
             <p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/MacFriends_">#MacFriends</a></p>
         </div>
         <% @results.attrs[:statuses].each do |tweet| %>
-            <h2>@<%= tweet[:user][:screen_name] %></h2>
+			<h2><a href="<%=tweet[:user][:screen_name]%>">@<%=tweet[:user][:screen_name]%></a></h2>
             <p><%= tweet[:text].to_s %></p>
             <% if tweet[:entities][:media] != nil %>
                 <img src="<%= tweet[:entities][:media][0][:media_url] %>">
@@ -58,4 +58,3 @@
     </div>
 </body>
 <html>
-
