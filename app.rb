@@ -32,3 +32,10 @@ end
 get '/embedly' do
 	erb :embedly
 end
+
+get '/category' do
+    word = "#macfriends #dj";
+	@results = twClient.search(word, :count => 100)
+	erb :category
+end
+

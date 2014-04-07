@@ -35,7 +35,6 @@
 			<h3>Community starts with friendship! <a href="/about" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></h3>
 			<p>Share your Macbook sticker with the hashtag <a href="https://twitter.com/MacFriends_">#MacFriends</a></p>
 		</div>
-		
 		<% @results.attrs[:statuses].each do |tweet| %>
 			<h2>@<%= tweet[:user][:screen_name] %></h2>
 			<p><%= tweet[:text].to_s %></p>
