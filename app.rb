@@ -39,3 +39,9 @@ get '/category' do
 	erb :category
 end
 
+get '/popularity' do
+	options = {"count" => 1000}
+	@timeline = twClient.user_timeline("MacFriends_", options)
+	erb :popularity
+end
+
