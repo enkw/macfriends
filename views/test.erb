@@ -34,7 +34,7 @@
 	</script>
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/lightbox.min.js"></script>
-    <title>#MacFriends - Share your smile with Macbook</title>
+    <title>#MacFriends - あなたのMacBookの背面をシェアしましょう！</title>
 </head>
 <body>
     <div class ="container">
@@ -56,10 +56,9 @@
             <% @timeline.each do |res| %>
                 <% if res.retweeted_tweet.media[0] != nil %>
 				<% if res.retweeted_tweet.user.screen_name.to_s != '' %>
-                    	<div class="col-lg-6" >
-							
-							<% if res.retweeted_tweet.media[0] %>							
-								<h2 class = "spot"><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
+                    	<div class="col-lg-6" >		
+				<% if res.retweeted_tweet.media[0] %>
+					<h2 class = "spot"><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
                             	<p class = "space"><%= res.retweeted_tweet.text %></p>
 								<div id = "media">
 								<a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box" src="<%= res.retweeted_tweet.media[0].media_url %>"></a>
