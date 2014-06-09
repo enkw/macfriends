@@ -60,7 +60,7 @@
 				<% if res.retweeted_tweet.media[0] %>
 					<h2 class = "spot"><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
                             	<% s =  res.retweeted_tweet.text + "abcde" %>
-<% s = s.gsub(/(http)/,"<a href = http") %><% s = s.gsub(/(abcde)/,"> http://t.co/FV2SA14TBg")%><%= s %>
+<% s = s.gsub(/(http)/,"<a href = http") %><% s = s.gsub(/(abcde)/,"> #{res.retweeted_tweet.media[0].media_url}")%><%= s %>
 								<div id = "media">
 								<a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box" src="<%= res.retweeted_tweet.media[0].media_url %>"></a>
 								</div>
