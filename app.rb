@@ -19,6 +19,17 @@ get '/' do
 	erb :test
 end
 
+get '/jp' do
+  options = {"count" => 1000}
+  @timeline = twClient.user_timeline("MacFriends_", options)
+  erb :jp
+end
+
+
+get '/jp/jpabout' do
+  erb :jpabout
+end
+
 get '/about' do
 	erb :about
 end
