@@ -1,5 +1,6 @@
 require 'twitter'
 require 'sinatra'
+require 'aws-sdk-core'
 
 TW_CONSUMER_KEY        = ENV["TWCK"]
 TW_CONSUMER_SECRET     = ENV["TWCS"]
@@ -13,46 +14,29 @@ twClient = Twitter::REST::Client.new do |config|
     config.access_token_secret = TW_ACCESS_TOKEN_SECRET
 end
 
+dynamo_db = Aws::DynamoDB::Client.new(
+  :region => ENV["DYNAMODB_REGION"],
+  :access_key_id => ENV["DYNAMODB_ACCESS_KEY"],
+  :secret_access_key => ENV["DYNAMODB_SECRET_ACCESS_KEY"]
+)
+
 get '/' do
 	options = {"count" => 1000}
 	@timeline = twClient.user_timeline("MacFriends_", options)
 	erb :test
 end
 
-get '/jp' do
-  options = {"count" => 1000}
-  @timeline = twClient.user_timeline("MacFriends_", options)
-  erb :jp
-end
-
-
-get '/jp/jpabout' do
-  erb :jpabout
-end
-
 get '/about' do
 	erb :about
 end
 
-get '/test' do
-	word = "#macfriends";
-    @results = twClient.search(word, :count => 100)
-    erb :index
+get '/db' do
+  @dynamodb = dynamo_db.get_item(
+    table_name: "tweets",
+    key: {
+      "tweet_id" => 527300424303259649
+    },
+    consistent_read: true
+  ).item
+  erb :db
 end
-
-get '/embedly' do
-	erb :embedly
-end
-
-get '/category' do
-	word = "#macfriends #dj";
-	@results = twClient.search(word, :count => 100000000000000000000000)
-	erb :category
-end
-
-get '/popularity' do
-	options = {"count" => 1000}
-	@timeline = twClient.user_timeline("MacFriends_", options)
-	erb :popularity
-end
-

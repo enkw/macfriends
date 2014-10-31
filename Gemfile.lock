@@ -3,23 +3,27 @@ GEM
   specs:
     addressable (2.3.5)
     atomic (1.1.14)
+    aws-sdk-core (2.0.5)
+      builder (~> 3.0)
+      jamespath (>= 0.5.1)
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
     buftok (0.2.0)
+    builder (3.2.2)
     equalizer (0.0.9)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.6.0)
-    instagram (0.3.2)
-      addressable
-      nibbler (>= 1.2.0)
-      yajl-ruby
+    jamespath (0.5.1)
     json (1.8.1)
     memoizable (0.4.0)
       thread_safe (~> 0.1.3)
+    multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    nibbler (1.3.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -42,12 +46,11 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.2.0)
-    yajl-ruby (1.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  instagram
+  aws-sdk-core
   sinatra
   twitter
