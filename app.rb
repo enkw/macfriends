@@ -1,6 +1,7 @@
 require 'twitter'
 require 'sinatra'
-require 'aws-sdk-core'
+require 'mysql2'
+require 'json'
 
 TW_CONSUMER_KEY        = ENV["TWCK"]
 TW_CONSUMER_SECRET     = ENV["TWCS"]
@@ -14,11 +15,12 @@ twClient = Twitter::REST::Client.new do |config|
     config.access_token_secret = TW_ACCESS_TOKEN_SECRET
 end
 
-dynamo_db = Aws::DynamoDB::Client.new(
-  :region => ENV["DYNAMODB_REGION"],
-  :access_key_id => ENV["DYNAMODB_ACCESS_KEY"],
-  :secret_access_key => ENV["DYNAMODB_SECRET_ACCESS_KEY"]
-)
+client = Mysql2::Client.new(
+  :host => ENV["MYSQL_HOST"],
+  :username => ENV["MYSQL_USERNAME"],
+  :password => ENV["MYSQL_PASS"],
+  :database => ENV["MYSQL_DATABASE"]
+  )
 
 get '/' do
 	options = {"count" => 1000}
@@ -30,13 +32,24 @@ get '/about' do
 	erb :about
 end
 
-get '/db' do
-  @dynamodb = dynamo_db.get_item(
-    table_name: "tweets",
-    key: {
-      "tweet_id" => 527300424303259649
-    },
-    consistent_read: true
-  ).item
-  erb :db
+get '/mysql' do
+  @mysql = client.query("SELECT * from tweets ORDER BY rt_cnt DESC")
+  erb :mysql
+end
+
+get '/category' do
+  @mysql = client.query("SELECT * from tweets where hashtags != 'NULL' ORDER BY created_at DESC", :as => :hash)
+  @tags = client.query("SELECT * from tags")
+  erb :category
+end
+
+get '/test2/:tag' do
+  content_type :json
+  query = "select * from tweets where hashtags like '%#" + params[:tag] + "#%'"
+  result = client.query(query, :as => :json)
+  data = []
+  result.each do |ms|
+    data.push(ms)
+  end
+  data.to_json
 end
