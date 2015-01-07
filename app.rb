@@ -34,12 +34,14 @@ end
 
 get '/mysql' do
   @mysql = client.query("SELECT * from tweets ORDER BY rt_cnt DESC")
+  client.close
   erb :mysql
 end
 
 get '/category' do
   @mysql = client.query("SELECT * from tweets where hashtags != 'NULL' ORDER BY created_at DESC", :as => :hash)
   @tags = client.query("SELECT * from tags")
+  client.close
   erb :category
 end
 
@@ -47,6 +49,7 @@ get '/test2/:tag' do
   content_type :json
   query = "select * from tweets where hashtags like '%#" + params[:tag] + "#%'"
   result = client.query(query, :as => :json)
+  client.close
   data = []
   result.each do |ms|
     data.push(ms)
