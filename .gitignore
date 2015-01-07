@@ -14,6 +14,11 @@ tmp
 
 *.swp
 
+.bundle
+vendor/bundler
+*.lock
+.git
+
 # YARD artifacts
 .yardoc
 _yardoc
