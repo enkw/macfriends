@@ -19,23 +19,22 @@ client = Mysql2::Client.new(
   :host => ENV["MYSQL_HOST"],
   :username => ENV["MYSQL_USERNAME"],
   :password => ENV["MYSQL_PASS"],
-  :database => ENV["MYSQL_DATABASE"],
-  :reconnect => true
+  :database => ENV["MYSQL_DATABASE"]
   )
 
 get '/' do
 	options = {"count" => 1000}
 	@timeline = twClient.user_timeline("MacFriends_", options)
-	erb :test
+	erb :index
 end
 
 get '/about' do
 	erb :about
 end
 
-get '/mysql' do
+get '/rank' do
   @mysql = client.query("SELECT * from tweets ORDER BY rt_cnt DESC")
-  erb :mysql
+  erb :rank
 end
 
 get '/category' do
@@ -44,7 +43,7 @@ get '/category' do
   erb :category
 end
 
-get '/test2/:tag' do
+get '/hashtags/:tag' do
   content_type :json
   query = "select * from tweets where hashtags like '%#" + params[:tag] + "#%'"
   result = client.query(query, :as => :json)
