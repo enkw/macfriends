@@ -69,7 +69,7 @@
       <% @timeline.each do |res| %>
         <% if res.retweeted_tweet.media[0] != nil %>
           <% if res.retweeted_tweet.user.screen_name.to_s != '' %>
-            <div class="col-lg-6 col-xs-12" >
+            <div class="col-xs-12 col-lg-6">
               <% if res.retweeted_tweet.media[0] %>
                 <h2 class = "spot"><a href="https://twitter.com/<%= "#{res.retweeted_tweet.user.screen_name}" %>">@<%= "#{res.retweeted_tweet.user.screen_name}" %></a></h2>
                 <p><% t = res.retweeted_tweet.text+"abcde"%><% t =~ /http(.*?)abcde/i%><% b ="http"+ $1 %></p>
@@ -78,7 +78,7 @@
                 <% s = s.gsub(/(abcde)/,"> #{b}")%>
                 <%= s %>
               <div id = "media">
-                <a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box" src="<%= res.retweeted_tweet.media[0].media_url %>"></a>
+                  <a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box img-responsive" src="<%= res.retweeted_tweet.media[0].media_url %>" alt="Responsive image"></a>
               </div>
               <p class = "space"><%= "#{res.retweeted_tweet.created_at}" %></p>
               <% end %>
