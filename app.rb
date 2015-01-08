@@ -19,7 +19,9 @@ client = Mysql2::Client.new(
   :host => ENV["MYSQL_HOST"],
   :username => ENV["MYSQL_USERNAME"],
   :password => ENV["MYSQL_PASS"],
-  :database => ENV["MYSQL_DATABASE"]
+  :database => ENV["MYSQL_DATABASE"],
+  :reconnect => true,
+  :port => 3306
   )
 
 get '/' do
