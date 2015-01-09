@@ -7077,6 +7077,8 @@ td.visible-print {
 
   #media {
     margin: auto;
+    width: auto;
+    height: auto;
   }
 
 }
