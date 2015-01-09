@@ -7065,6 +7065,7 @@ td.visible-print {
 
 @media screen and (max-width: 768px) {
   .box {
+    max-height: 250px;
     height: auto;
   }
 }
