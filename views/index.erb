@@ -78,7 +78,7 @@
                 <% s = s.gsub(/(abcde)/,"> #{b}")%>
                 <%= s %>
               <div id = "media">
-                  <a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box img-responsive" src="<%= res.retweeted_tweet.media[0].media_url %>" alt="Responsive image"></a>
+                  <a href="<%= res.retweeted_tweet.media[0].media_url %>" data-lightbox="image-1" data-title="<%= res.retweeted_tweet.text %>"><img class = "box img-responsive" src="<%= res.retweeted_tweet.media[0].media_url %>" alt="Responsive-image"></a>
               </div>
               <p class = "space"><%= "#{res.retweeted_tweet.created_at}" %></p>
               <% end %>
