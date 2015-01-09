@@ -7061,6 +7061,7 @@ td.visible-print {
 #media {
   width:500px;
   height:400px;
+  margin: 0 auto;
 }
 
 .box {
@@ -7073,4 +7074,9 @@ td.visible-print {
     max-height: 250px;
     height: auto;
   }
+
+  #media {
+    margin: auto;
+  }
+
 }
