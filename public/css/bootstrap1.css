@@ -7058,7 +7058,12 @@ td.visible-print {
   }
 }
 
-.box{
+#media {
+  width:500px;
+  height:400px;
+}
+
+.box {
   width:500px;
   height:400px;
 }
