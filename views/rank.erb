@@ -68,11 +68,11 @@
   <div class="container w">
     <div class="row centered">
         <% @mysql.each do |row| %>
-          <div class="col-lg-6" >
+          <div class="col-xs-12 col-lg-6" >
             <h2 class = "spot"><a href="https://twitter.com/<%= row["scree_name"] %>">@<%= row["screen_name"] %></a></h2>
             <p><%= row["tweet_text"] %></p>
               <div id = "media">
-                <a href="<%= row["media_url"] %>" data-lightbox="image-1" data-title="<%= row["media_url"] %>"><img class = "box" src="<%= row["media_url"] %>"></a>
+                <a href="<%= row["media_url"] %>" data-lightbox="image-1" data-title="<%= row["media_url"] %>"><img class = "box img-responsive" src="<%= row["media_url"] %>"></a>
               </div>
               <p><%= row["created_at"] %></p>
           </div>
