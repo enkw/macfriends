@@ -55,3 +55,7 @@ get '/hashtags/:tag' do
   end
   data.to_json
 end
+
+not_found do
+  erb :error
+end
