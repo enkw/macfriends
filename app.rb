@@ -92,11 +92,6 @@ get '/admin' do
   erb :admin
 end
 
-# delete '/del' do
-#   tweets = Tweets.find(params[:tweet_id])
-#   tweets.destroy
-#   redirect '/admin'
-# end
 post '/delete' do
   Tweets.find(params[:tweet_id]).destroy
 end

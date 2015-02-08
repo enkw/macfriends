@@ -60,12 +60,6 @@
               <td><a href="http://twitter.com/<%= row.screen_name %>">@<%= row.screen_name %></a></td>
               <td><%= row.tweet_text %></td>
               <td><a href="<%= row.media_url %>"><%= row.media_url %></a></td>
-              <!-- <form method="post" action="del">
-                <td><input type="submit" value="削除"></td>
-                <input type="hidden" name="tweet_id" value="<%= row.tweet_id %>">
-                <input type="hidden" name="_method" value="delete">
-              </form> -->
-              <!-- <td><span class="deleteCmd"style="cursor:pointer;color:blue">[x]</span></td> -->
               <td><span class="deleteCmd glyphicon glyphicon-remove" aria-hidden="true" style="cursor:pointer"></span></td>
           </tr>
           <% end %>
