@@ -24,6 +24,21 @@ client = Mysql2::Client.new(
   :port => 3306
   )
 
+helpers do
+  def protect!
+    unless authorized?
+      response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+      throw(:halt, [401, "Not authorized\n"])
+    end
+  end
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    username = ENV["BASIC_AUTH_USERNAME"]
+    password = ENV["BASIC_AUTH_PASSWORD"]
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [username, password]
+  end
+end
+
 get '/' do
 	options = {"count" => 1000}
 	@timeline = twClient.user_timeline("MacFriends_", options)
@@ -54,6 +69,11 @@ get '/hashtags/:tag' do
     data.push(ms)
   end
   data.to_json
+end
+
+get '/admin' do
+  protect!
+  'アクセス制限あり'
 end
 
 not_found do
