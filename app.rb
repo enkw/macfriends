@@ -73,7 +73,7 @@ end
 
 get '/admin' do
   protect!
-  'アクセス制限あり'
+  erb :admin
 end
 
 not_found do
