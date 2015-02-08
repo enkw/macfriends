@@ -25,7 +25,7 @@
     ga('create', 'UA-48511895-1', 'macfriends.net');
     ga('send', 'pageview');
   </script>
-  <title>#MacFriends - about</title>
+  <title>#MacFriends - admin page</title>
 </head>
 <body>
   <!-- Fixed navbar -->
@@ -37,28 +37,40 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">#MacFriends</a>
+        <a class="navbar-brand" href="/">Admin page</a>
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">HOME</a></li>
-          <li class="active"><a href="/about">ABOUT</a></li>
-          <li><a href="/rank">RANKING</a></li>
-          <li><a href="/category">CATEGORY</a></li>
-          <li><a href="https://twitter.com/MacFriends_"><i class="fa fa-twitter"></a></i></li>
-        </ul>
-      </div><!--/.nav-collapse -->
     </div>
   </div>
 
     <div class="container w">
-      <h3>Welcome to #MacFriends!!</h3>
-      <h3>See and share with friends the lid area of your Macbook!</h3>
-      <h3>If it has a word "mac" then don't hesitate to share with friends the lid area of your Macbook! Why not help us, by taking part in this #Macfriends movement!</h3>
-      <h3>#Macfriends was inspired by <a href="http://rubyfriends.com">#RubyFriends</a>! Thank you <a href="http://rubyfriends.com">#Rubyfirends</a>!</h3>
-      <h3>Contact : <a href="https://twitter.com/enkw_">@enkw_</a></h3>
-      <a href="/" class="btn btn-lg btn-default" role="button">Back</a>
-      <p></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>tweet_id</th>
+            <th>screen_name</th>
+            <th>tweet_text</th>
+            <th>media_url</th>
+            <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admin.each do |row| %>
+          <tr data-id="<%= row.id %>">
+              <td><%= row.tweet_id %></td>
+              <td><a href="http://twitter.com/<%= row.screen_name %>">@<%= row.screen_name %></a></td>
+              <td><%= row.tweet_text %></td>
+              <td><a href="<%= row.media_url %>"><%= row.media_url %></a></td>
+              <!-- <form method="post" action="del">
+                <td><input type="submit" value="削除"></td>
+                <input type="hidden" name="tweet_id" value="<%= row.tweet_id %>">
+                <input type="hidden" name="_method" value="delete">
+              </form> -->
+              <!-- <td><span class="deleteCmd"style="cursor:pointer;color:blue">[x]</span></td> -->
+              <td><span class="deleteCmd glyphicon glyphicon-remove" aria-hidden="true" style="cursor:pointer"></span></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
 
     <div id="f">
@@ -70,6 +82,20 @@
       </div><!-- container -->
     </div><!-- Footer -->
 
+    <script>
+      $('.deleteCmd').click(function() {
+        var el = $(this).parent().parent();
+
+        //var el = document.getElementsByClassName('deleting');
+        if (confirm('are you sure to delete?')){
+          $.post('/delete', {
+            tweet_id: el.data('id')
+          }, function() {
+            el.fadeOut(800);
+          });
+        }
+      })
+    </script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap1.min.js"></script>
 </body>

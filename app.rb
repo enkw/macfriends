@@ -2,6 +2,7 @@ require 'twitter'
 require 'sinatra'
 require 'mysql2'
 require 'json'
+require 'active_record'
 
 TW_CONSUMER_KEY        = ENV["TWCK"]
 TW_CONSUMER_SECRET     = ENV["TWCS"]
@@ -23,6 +24,20 @@ client = Mysql2::Client.new(
   :reconnect => true,
   :port => 3306
   )
+
+ActiveRecord::Base.establish_connection(
+  adapter:  "mysql2",
+  host:     ENV["MYSQL_HOST"],
+  username: ENV["MYSQL_USERNAME"],
+  password: ENV["MYSQL_PASS"],
+  database: ENV["MYSQL_DATABASE"],
+  :reconnect => true,
+  :port => 3306
+)
+
+class Tweets < ActiveRecord::Base
+  self.table_name = "tweets"
+end
 
 helpers do
   def protect!
@@ -73,7 +88,17 @@ end
 
 get '/admin' do
   protect!
+  @admin = Tweets.all
   erb :admin
+end
+
+# delete '/del' do
+#   tweets = Tweets.find(params[:tweet_id])
+#   tweets.destroy
+#   redirect '/admin'
+# end
+post '/delete' do
+  Tweets.find(params[:tweet_id]).destroy
 end
 
 not_found do
