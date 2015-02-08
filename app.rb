@@ -39,6 +39,10 @@ class Tweets < ActiveRecord::Base
   self.table_name = "tweets"
 end
 
+class Tags < ActiveRecord::Base
+  self.table_name = "tags"
+end
+
 helpers do
   def protect!
     unless authorized?
@@ -89,11 +93,16 @@ end
 get '/admin' do
   protect!
   @admin = Tweets.all
+  @tags = Tags.all
   erb :admin
 end
 
 post '/delete' do
   Tweets.find(params[:tweet_id]).destroy
+end
+
+post '/delete2' do
+  Tags.find(params[:id]).destroy
 end
 
 not_found do

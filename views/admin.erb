@@ -44,13 +44,15 @@
 
     <div class="container w">
       <table class="table table-striped">
+        <h2>tweets table</h2>
+        <hr>
         <thead>
           <tr>
             <th>tweet_id</th>
             <th>screen_name</th>
             <th>tweet_text</th>
             <th>media_url</th>
-            <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+            <th>Del</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +63,27 @@
               <td><%= row.tweet_text %></td>
               <td><a href="<%= row.media_url %>"><%= row.media_url %></a></td>
               <td><span class="deleteCmd glyphicon glyphicon-remove" aria-hidden="true" style="cursor:pointer"></span></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table table-striped">
+        <h2>tags table</h2>
+        <hr>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>hashtags</th>
+            <th>Del</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tags| %>
+          <tr data-id="<%= tags.id %>">
+              <td><%= tags.id %></td>
+              <td><%= tags.hashtags %></td>
+              <td><span class="deleteCmd2 glyphicon glyphicon-remove" aria-hidden="true" style="cursor:pointer"></span></td>
           </tr>
           <% end %>
         </tbody>
@@ -79,11 +102,22 @@
     <script>
       $('.deleteCmd').click(function() {
         var el = $(this).parent().parent();
-
-        //var el = document.getElementsByClassName('deleting');
         if (confirm('are you sure to delete?')){
           $.post('/delete', {
             tweet_id: el.data('id')
+          }, function() {
+            el.fadeOut(800);
+          });
+        }
+      })
+    </script>
+
+    <script>
+      $('.deleteCmd2').click(function() {
+        var el = $(this).parent().parent();
+        if (confirm('are you sure to delete?')){
+          $.post('/delete2', {
+            id: el.data('id')
           }, function() {
             el.fadeOut(800);
           });
